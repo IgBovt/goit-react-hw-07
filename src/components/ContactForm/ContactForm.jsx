@@ -20,7 +20,6 @@ const FeedbackSchema = Yup.object().shape({
   number: Yup.string()
     .min(3, 'Too Short!')
     .max(10, 'Too Long!')
-    .matches(/^\d{3}-\d{2}-\d{2}$/, 'Формат повинен бути "111-11-11"')
     .required('Fill this field'),
 });
 const initialValues = { name: '', number: '' };
