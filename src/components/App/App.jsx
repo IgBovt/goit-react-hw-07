@@ -5,10 +5,10 @@ import SearchBox from '../SearchBox/SearchBox';
 import ContactForm from '../ContactForm/ContactForm';
 import css from './App.module.css';
 import { ToastContainer } from 'react-toastify';
+import { fetchContacts } from '../../redux/contactsOps';
 
 export default function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);

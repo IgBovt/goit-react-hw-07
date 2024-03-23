@@ -1,12 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contactsOps';
 import { IoIosPersonAdd } from 'react-icons/io';
 import { useId } from 'react';
-import { useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import { addContact } from '../../redux/contactsSlice';
-import { selectContacts } from '../../redux/contactsSlice';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './ContactForm.module.css';
 
@@ -26,7 +24,7 @@ const initialValues = { name: '', number: '' };
 
 export default function ContactForm() {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+  const contacts = [];
 
   const nameID = useId();
   const numberID = useId();
@@ -34,7 +32,8 @@ export default function ContactForm() {
   const handleSubmit = (values, actions) => {
     contacts.find(contact => contact.name === values.name)
       ? notify()
-      : (dispatch(addContact(values)), actions.resetForm());
+      : dispatch(addContact(values));
+    actions.resetForm();
   };
 
   return (
