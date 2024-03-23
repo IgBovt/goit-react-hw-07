@@ -27,7 +27,6 @@ const slice = createSlice({
       })
       .addCase(addContact.fulfilled, (state, action) => {
         state.items.push(action.payload);
-        console.log(action.payload);
       })
       .addCase(addContact.rejected, state => {
         state.error = true;
@@ -44,4 +43,7 @@ const slice = createSlice({
 });
 
 export const selectContacts = state => state.contacts.items;
+export const selectLoading = state => state.contacts.loading;
+export const selectError = state => state.contacts.error;
+
 export default slice.reducer;

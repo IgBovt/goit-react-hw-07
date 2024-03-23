@@ -1,9 +1,10 @@
 import { deleteContact } from '../../redux/contactsOps';
+import { useDispatch } from 'react-redux';
 import { FaUserAlt } from 'react-icons/fa';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { FaPhoneVolume } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
 import css from './Contact.module.css';
+import { deleteToast, deleteErrToast } from '../../toasts';
 
 export default function Contact({ id, name, number }) {
   const dispatch = useDispatch();
@@ -29,7 +30,14 @@ export default function Contact({ id, name, number }) {
       <button
         className={css.btn}
         onClick={() => {
-          dispatch(deleteContact(id));
+          dispatch(deleteContact(id))
+            .unwrap()
+            .then(() => {
+              deleteToast(name);
+            })
+            .catch(() => {
+              deleteErrToast();
+            });
         }}
       >
         Delete
