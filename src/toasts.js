@@ -64,3 +64,16 @@ export const addContactErrToast = () =>
     theme: 'light',
     transition: Bounce,
   });
+
+export const errToast = () =>
+  toast.error('Sorry... Something wrong happened...', {
+    position: 'top-right',
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light',
+    transition: Bounce,
+  });

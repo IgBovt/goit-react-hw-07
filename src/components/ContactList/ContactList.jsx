@@ -1,10 +1,10 @@
 import Contact from '../Contact/Contact';
 import { useSelector } from 'react-redux';
-import { selectContacts } from '../../redux/contactsSlice';
+import { filteredContacts } from '../../redux/contactsSlice';
 import css from './ContactList.module.css';
 
 export default function ContactList() {
-  const contacts = useSelector(selectContacts);
+  const contacts = useSelector(filteredContacts);
 
   return contacts.length === 0 ? (
     <p className={css.text}>We haven`t found any contacts</p>

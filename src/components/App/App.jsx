@@ -7,6 +7,7 @@ import SearchBox from '../SearchBox/SearchBox';
 import ContactForm from '../ContactForm/ContactForm';
 import css from './App.module.css';
 import { ToastContainer } from 'react-toastify';
+import { errToast } from '../../toasts';
 import { Watch } from 'react-loader-spinner';
 
 export default function App() {
@@ -37,7 +38,7 @@ export default function App() {
       )}
 
       <ToastContainer />
-      {error && console.log('2')}
+      {error && errToast()}
     </div>
   );
 }
